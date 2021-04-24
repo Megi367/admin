@@ -1,0 +1,36 @@
+<div class = text-center>
+<p>{{message}}</p>
+<input type="text"[(ngModel)]="message2"/>
+<p>{{message2}}</p>
+<br>
+<br>
+<button (click) = "onToggleAlbumesClicked()">Togle Albums</button>
+</div>
+
+<table *ngIf="showAlbums" class="table table-striped">
+  <thead>
+  <tr>
+    <td>Id</td>
+    <td>User Id</td>
+    <td>Title</td>
+    <td>Action</td>
+
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let album of albums">
+    <td>{{ album.id }}</td>
+    <td>{{ album.userId }}</td>
+    <td>{{ album.title }}</td>
+    <td><button (click) = "onAlbumesClicked(album.id)">Update</button></td>
+  </tr>
+  </tbody>
+</table>
+
+<div *ngIf="showForm && album">
+<form>
+  <input type="text" placeholder="Enter your Id" [value]="album.id"/>
+  <input type="text" placeholder="Enter your user Id" [value]="album.userId"/>
+  <input type="text" placeholder="Enter your title" [value]="album.title"/>
+</form>
+</div>
